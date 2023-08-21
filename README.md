@@ -1,8 +1,10 @@
 # ros2_MinimalAction
 
 This repository can be used as an example on how to use a custom ros2 action.
-It has been crafted from the [ROS 2 examples](https://github.com/ros2/examples/tree/humble) repo.
-This particular action has been overly simplified. When an integer is provided it simply counts up to said integer, providing the array of all the previous values as feedback.
+
+It has been created from the [ROS 2 examples](https://github.com/ros2/examples/tree/humble) repo.
+This package has been highly simplified with respect to its predecessor in order to have an even more basic example.
+When an integer is provided it simply counts up to said integer, providing the array of all the previous values as feedback and returning a `true` if the tasks succeeds.
 
 
 ## Folders
