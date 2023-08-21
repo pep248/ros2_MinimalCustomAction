@@ -54,14 +54,8 @@ public:
     this->client_ptr_->async_send_goal(goal_msg, send_goal_options);
   }
 
-  bool isActionFinished()
-  {
-    return goal_done_;
-  }
-
 private:
   rclcpp_action::Client<CustomAction>::SharedPtr client_ptr_;
-  bool goal_done_ = false;
 
   // Response Callback
   void goal_response_callback(GoalHandle::SharedPtr goal_message)
@@ -69,6 +63,7 @@ private:
     if (!goal_message)
     {
       RCLCPP_ERROR(this->get_logger(), "Client: Goal was rejected by server");
+      rclcpp::shutdown(); // Shut down client node
     }
     else
     {
@@ -94,22 +89,25 @@ private:
   // Result Callback
   void result_callback(const GoalHandle::WrappedResult & result_message)
   {
-    goal_done_ = true;
     switch (result_message.code)
     {
       case rclcpp_action::ResultCode::SUCCEEDED:
         break;
       case rclcpp_action::ResultCode::ABORTED:
         RCLCPP_ERROR(this->get_logger(), "Client: Goal was aborted");
+        rclcpp::shutdown(); // Shut down client node
         return;
       case rclcpp_action::ResultCode::CANCELED:
         RCLCPP_ERROR(this->get_logger(), "Client: Goal was canceled");
+        rclcpp::shutdown(); // Shut down client node
         return;
       default:
         RCLCPP_ERROR(this->get_logger(), "Client: Unknown result code");
+        rclcpp::shutdown(); // Shut down client node
         return;
     }
     RCLCPP_INFO(this->get_logger(), "Client: Result received: %s", (result_message.result->succeeded ? "true" : "false"));
+    rclcpp::shutdown(); // Shut down client node
   }
 };
 
@@ -126,10 +124,7 @@ int main(int argc, char **argv)
     action_client->send_goal(10);
 
     // Check if the action was successful and kill the node once finished
-    while (!action_client->isActionFinished())
-    {
-      executor.spin();
-    }
+    executor.spin();
 
     rclcpp::shutdown();
     return 0;
