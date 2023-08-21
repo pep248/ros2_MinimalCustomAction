@@ -45,7 +45,8 @@ ros2 launch minimal_action minimal_action.launch.py
 ```
 
 #### Manual server and requests
-To run the server manually, you can do the following:
+If instead you prefer to run the server manually, you can type the following:
+
 Run the server:
 ```
 ros2 run minimal_action minimal_action_server 
