@@ -20,7 +20,7 @@ install(TARGETS minimal_action_client
   DESTINATION lib/${PROJECT_NAME}
 )
 
-# Add the action client executable
+# Add the action server executable
 ament_auto_add_executable(minimal_action_server src/minimal_action_server.cpp)
 # Install the executable
 install(TARGETS minimal_action_server
