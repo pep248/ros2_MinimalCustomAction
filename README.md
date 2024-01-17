@@ -1,4 +1,4 @@
-# ros2_MinimalAction
+# ros2_MinimalCustomAction
 
 This repository can be used as an example on how to use a custom ros2 action.
 
