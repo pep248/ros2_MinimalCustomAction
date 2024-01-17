@@ -23,7 +23,7 @@ cd ros2_ws
 
 Download the repo
 ```
-git clone https://github.com/pep248/ros2_MinimalAction.git
+git clone https://github.com/pep248/ros2_MinimalCustomAction.git
 ```
 
 Compile the packages:
@@ -54,7 +54,7 @@ ros2 run minimal_action minimal_action_server
 
 Open another terminal and make a manual requests:
 ```
-ros2 action send_goal /custom_action custom_action/action/Customaction 'goal: 10'
+ros2 action send_goal /custom_action custom_action/action/CustomAction 'goal: 10'
 ```
 
 ## Author

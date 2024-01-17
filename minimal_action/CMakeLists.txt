@@ -13,15 +13,20 @@ find_package(custom_action REQUIRED)
 find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 
+
 # Add the action client executable
-ament_auto_add_executable(minimal_action_client src/minimal_action_client.cpp)
+ament_auto_add_executable(minimal_action_client 
+  src/minimal_action_client_node.cpp
+  src/minimal_action_client_class.cpp) # dependencies
 # Install the executable
 install(TARGETS minimal_action_client
   DESTINATION lib/${PROJECT_NAME}
 )
 
 # Add the action server executable
-ament_auto_add_executable(minimal_action_server src/minimal_action_server.cpp)
+ament_auto_add_executable(minimal_action_server
+  src/minimal_action_server_node.cpp
+  src/minimal_action_server_class.cpp) # dependencies
 # Install the executable
 install(TARGETS minimal_action_server
   DESTINATION lib/${PROJECT_NAME}

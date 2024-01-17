@@ -11,7 +11,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 # custom action message
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "action/Customaction.action")
+  "action/CustomAction.action")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

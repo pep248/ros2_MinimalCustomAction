@@ -1,0 +1,12 @@
+# Important that the file_name starts with capital letter and has no symbols
+# Except the first letter, each other capital letter will be replaced with _ when including the custome message:
+# example: #include "custom_action/action/custom_action.hpp"
+
+# Request
+int32 goal
+---
+# Result
+bool succeeded
+---
+# Feedback
+int32[] sequence
